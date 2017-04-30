@@ -22,6 +22,12 @@ import { TicketService } from './services/ticket.service';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './services/counter';
 
+// importar router
+import { RouterModule, Routes } from '@angular/router';
+import { APPROUTER } from './commons/router';
+import { PageNotFoundComponent } from './notFound/page.not.found.component';
+import { InitComponent } from './init.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +37,10 @@ import { counterReducer } from './services/counter';
     ConversorPipe,
     // declarando las directivas GigantDirective y HighligtDirective
     GigantDirective,
-    HighligtDirective
+    HighligtDirective,
+    // declarando la directiva page not found
+    PageNotFoundComponent,
+    InitComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +49,11 @@ import { counterReducer } from './services/counter';
     // importamos los reactive forms
     ReactiveFormsModule,
     // declarando la importacion ngrx
-    StoreModule.provideStore({ counter: counterReducer })
+    StoreModule.provideStore({ counter: counterReducer }),
+    // declarando el modulo routes
+    RouterModule.forRoot(APPROUTER)
   ],
   providers: [TicketService],
-  bootstrap: [AppComponent]
+  bootstrap: [InitComponent]
 })
 export class AppModule { }
