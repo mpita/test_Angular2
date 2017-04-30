@@ -28,6 +28,9 @@ import { APPROUTER } from './commons/router';
 import { PageNotFoundComponent } from './notFound/page.not.found.component';
 import { InitComponent } from './init.component';
 
+// importamos ticket detail
+import { TicketDetail } from './tickets/ticket.detail'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,9 @@ import { InitComponent } from './init.component';
     HighligtDirective,
     // declarando la directiva page not found
     PageNotFoundComponent,
-    InitComponent
+    InitComponent,
+    // declaramos el ticket detail
+    TicketDetail
   ],
   imports: [
     BrowserModule,
