@@ -15,6 +15,9 @@ import { ConversorPipe } from './pipes/conversor.pipe'
 import { GigantDirective } from './directives/gigant.directive'
 import { HighligtDirective } from './directives/highlight.directive'
 
+// importamos el servicio Ticket
+import { TicketService } from './services/ticket.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,7 @@ import { HighligtDirective } from './directives/highlight.directive'
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [TicketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
