@@ -6,6 +6,8 @@ import { InputComponet } from './input/input.component'
 // importamos el servicio Ticket
 import { TicketService } from './services/ticket.service'
 
+import { FormBuilder, FormGroup } from '@angular/forms'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,9 +21,19 @@ export class AppComponent {
   // listado de ticket
   tickets:any;
 
+  // creamos un grupo de datos para nuestro formulario
+  myForm:FormGroup;
+
   // el contructor crear el listado de tique desde el servicio ticketService
-  constructor(private ticketService : TicketService) {
+  constructor(
+    private ticketService : TicketService,
+    private fb : FormBuilder
+    ) {
     this.tickets = ticketService.getTiket();
+
+    this.myForm = fb.group({
+      'name': ['Manuel']
+    });
   }
 
   // votos array visible en input app que se integar con el selector input-componet
@@ -42,7 +54,7 @@ export class AppComponent {
   factor = 1;
   
   // captando una información de formulario
-  onSubmit(form: any): void {
-    console.log('El fomulario tiene:', form);
+  onSubmit(value: string): void {
+    console.log('El fomulario tiene:', value);
   }
 }
