@@ -5,9 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+// importa input component para ser declarado
+import { InputComponet } from './input/input.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    // se desclara el componente input component
+    InputComponet
   ],
   imports: [
     BrowserModule,
