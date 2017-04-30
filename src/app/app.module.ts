@@ -12,11 +12,15 @@ import { InputComponet } from './input/input.component';
 import { ConversorPipe } from './pipes/conversor.pipe'
 
 // importar las directive gigant y highlight
-import { GigantDirective } from './directives/gigant.directive'
-import { HighligtDirective } from './directives/highlight.directive'
+import { GigantDirective } from './directives/gigant.directive';
+import { HighligtDirective } from './directives/highlight.directive';
 
 // importamos el servicio Ticket
-import { TicketService } from './services/ticket.service'
+import { TicketService } from './services/ticket.service';
+
+// importar ngrx
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './services/counter';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { TicketService } from './services/ticket.service'
     FormsModule,
     HttpModule,
     // importamos los reactive forms
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // declarando la importacion ngrx
+    StoreModule.provideStore({ counter: counterReducer })
   ],
   providers: [TicketService],
   bootstrap: [AppComponent]
