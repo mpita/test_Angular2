@@ -11,13 +11,20 @@ import { InputComponet } from './input/input.component';
 // importar el pipe creado
 import { ConversorPipe } from './pipes/conversor.pipe'
 
+// importar las directive gigant y highlight
+import { GigantDirective } from './directives/gigant.directive'
+import { HighligtDirective } from './directives/highlight.directive'
+
 @NgModule({
   declarations: [
     AppComponent,
     // se desclara el componente input component
     InputComponet,
     // declaramos el conversor pipe
-    ConversorPipe
+    ConversorPipe,
+    // declarando las directivas GigantDirective y HighligtDirective
+    GigantDirective,
+    HighligtDirective
   ],
   imports: [
     BrowserModule,
