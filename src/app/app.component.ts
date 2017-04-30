@@ -40,4 +40,9 @@ export class AppComponent {
   // asignandole un valor inicial a pipe
   cantidad = 5;
   factor = 1;
+  
+  // captando una información de formulario
+  onSubmit(form: any): void {
+    console.log('El fomulario tiene:', form);
+  }
 }

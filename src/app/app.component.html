@@ -19,3 +19,19 @@
     <span highligt> [ {{ticket.estado}} ] </span>
   </li>
 </ul>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <div>
+    <label for="nameInput">Nombre</label>
+    <input type="text" id="nameInput" placeholder="Nombre" name="name" ngModel>
+  </div>
+  <div>
+    <label for="apellidoInput">Apellido</label>
+    <input type="text" id="apellidoInput" placeholder="Apellido" name="apellido" ngModel>
+  </div>
+  <div>
+    <label for="twitterInput">Twitter</label>
+    <input type="text" id="twitterInput" placeholder="Twitter" name="twitter" ngModel>
+  </div>
+  <button type="submit">Submit</button>
+</form>
