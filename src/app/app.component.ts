@@ -11,6 +11,8 @@ import { InputComponet } from './input/input.component'
 export class AppComponent {
   // title que se muestra en app component
   title = 'Ejercicios de uso de angular!';
+  // votacion modificado por la funcion addVoto
+  votacion = '';
 
   // votos array visible en input app que se integar con el selector input-componet
   votos = [
@@ -19,4 +21,9 @@ export class AppComponent {
     {title: 'opción 3'},
     {title: 'opción 4'},
   ]
+
+  // funcion addVoto, para agregar un voto a lo que queremos addVoto
+  addVoto (response:string){
+    this.votacion = "Usted eligio: " + response;
+  }
 }
