@@ -26,4 +26,8 @@ export class AppComponent {
   addVoto (response:string){
     this.votacion = "Usted eligio: " + response;
   }
+  
+  // asignandole un valor inicial a pipe
+  cantidad = 5;
+  factor = 1;
 }
