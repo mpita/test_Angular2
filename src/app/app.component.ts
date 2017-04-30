@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 // importamos input componet que creamos
 import { InputComponet } from './input/input.component'
@@ -40,7 +40,8 @@ export class AppComponent {
   constructor(
     private ticketService :TicketService, 
     private fb: FormBuilder,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private _ngZone: NgZone
     ) {
     this.counter = store.select('counter');
 
@@ -85,5 +86,40 @@ export class AppComponent {
   reset(){
     this.store.dispatch({ type: RESET });
   }
+
+  progress: number = 0;
+  label: string;
+
+  //sin NgZone
+  processOutsideOfAngularZone() {
+    this.label = 'outside';
+    this.progress = 0;
+    this._ngZone.runOutsideAngular(() => {
+      this._increaseProgress(() => {
+        this._ngZone.run(() => { console.log('Finalizado con Zone!') });
+      
+      });
+    });
+  }
+
+  //con NgZone
+  processWithinAngularZone() {
+    this.label = 'inside';
+    this.progress = 0;
+    this._increaseProgress(() => console.log('Finalizado sin Zone!'));
+  }
   
+  _increaseProgress(doneCallback: () => void) {
+    this.progress += 1;
+    console.log(`Progreso: ${this.progress}%`);
+    
+    if (this.progress < 100) {
+      window.setTimeout(() => {
+        this._increaseProgress(doneCallback);
+      }, 10);
+    } else {
+      doneCallback();
+    }
+  }
+
 }
