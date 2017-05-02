@@ -46,6 +46,9 @@ export class AppComponent {
   // firebase
   ticketFirebase:any;
 
+  ticketMongo:any;
+  errorMessage:any;
+
   // el contructor crear el listado de tique desde el servicio ticketService
   constructor(
     private ticketService :TicketService, 
@@ -55,6 +58,12 @@ export class AppComponent {
     private router: Router,
     private af: AngularFire
     ) {
+      this.ticketService.getTicketMongo()
+          .then(
+            ticket => this.ticketMongo = ticket,
+            error => this.errorMessage = <any>error
+          )
+
       this.ticketFirebase = af.database.list('/ticket');
       /*
       this.ticketFirebase.push({

@@ -12,7 +12,14 @@
 <p>
   oh es: {{ cantidad | conversorPipe:factor }}
 </p>
-<h3>con fire base</h3>
+<h3>con MongoDb por Backend</h3>
+<ul>
+  <li *ngFor="let ticket of ticketMongo" gigant (click)="verTicket(ticket.id)">
+    <b>ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
+    <span highligt> [ {{ticket.estado}} ] </span>
+  </li>
+</ul>
+<h3>con FireBase</h3>
 <ul>
   <li *ngFor="let ticket of ticketFirebase | async" gigant>
     <b>ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
@@ -22,7 +29,7 @@
     <button (click)="verTicket(ticket.id)" > VER </button>
   </li>
 </ul>
-<h3>constante</h3>
+<h3>con JSON</h3>
 <ul>
   <li *ngFor="let ticket of tickets" gigant (click)="verTicket(ticket.id)">
     <b>ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
