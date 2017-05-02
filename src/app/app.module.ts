@@ -31,6 +31,9 @@ import { InitComponent } from './init.component';
 // importamos ticket detail
 import { TicketDetail } from './tickets/ticket.detail';
 
+// importando el update component
+import { UpdateComponent } from './update/update.component';
+
 // firebase
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -62,7 +65,9 @@ export const myFirebaseAuthConfig = {
     PageNotFoundComponent,
     InitComponent,
     // declaramos el ticket detail
-    TicketDetail
+    TicketDetail,
+    // declarando update component
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -175,6 +175,10 @@ export class AppComponent {
     this.router.navigate(['/ticket', id]);
   }
 
+  updateMongoTicket(id:number):void{
+    this.router.navigate(['/update', id]);
+  }
+
   verTicket(id:number):void{
     this.router.navigate(['/ticket', id]);
   }

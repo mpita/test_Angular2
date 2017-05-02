@@ -18,6 +18,7 @@
     <b>ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
     <span highligt> [ {{ticket.estado}} ] </span>
     <button (click)="verMongoTicket(ticket.id)" > VER </button>
+    <button (click)="updateMongoTicket(ticket.id)" > UPDATE </button>
   </li>
 </ul>
 <h3>con FireBase</h3>
