@@ -29,7 +29,24 @@ import { PageNotFoundComponent } from './notFound/page.not.found.component';
 import { InitComponent } from './init.component';
 
 // importamos ticket detail
-import { TicketDetail } from './tickets/ticket.detail'
+import { TicketDetail } from './tickets/ticket.detail';
+
+// firebase
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+export const firebaseConfig = {
+  apiKey: "you-apiKey",
+  authDomain: "you-authDomain",
+  databaseURL: "you-databaseURL",
+  projectId: "you-projectId",
+  storageBucket: "you-storageBucket",
+  messagingSenderId: "you-apiKey"
+}
+
+export const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Popup
+};
 
 @NgModule({
   declarations: [
@@ -56,7 +73,9 @@ import { TicketDetail } from './tickets/ticket.detail'
     // declarando la importacion ngrx
     StoreModule.provideStore({ counter: counterReducer }),
     // declarando el modulo routes
-    RouterModule.forRoot(APPROUTER)
+    RouterModule.forRoot(APPROUTER),
+    // importando la configuracion de fire base
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
   providers: [TicketService],
   bootstrap: [InitComponent]
