@@ -58,11 +58,16 @@ export class AppComponent {
     private router: Router,
     private af: AngularFire
     ) {
+
+      /*
       this.ticketService.getTicketsMongo()
           .then(
             ticket => this.ticketMongo = ticket,
             error => this.errorMessage = <any>error
           )
+      */
+
+      this.callTicketsMongo();
 
       this.ticketFirebase = af.database.list('/ticket');
       /*
@@ -100,6 +105,14 @@ export class AppComponent {
         method: AuthMethods.Popup,
       });
   }
+
+  callTicketsMongo(){
+      this.ticketService.getTicketsMongo()
+        .then(
+          ticket => this.ticketMongo = ticket,
+          error => this.errorMessage = <any>error
+        )
+    }
 
   // votos array visible en input app que se integar con el selector input-componet
   votos = [
@@ -171,12 +184,27 @@ export class AppComponent {
     }
   }
 
-  verMongoTicket(id:number):void{
+  verMongoTicket(id:number):void {
     this.router.navigate(['/ticket', id]);
   }
 
-  updateMongoTicket(id:number):void{
+  updateMongoTicket(id:number):void {
     this.router.navigate(['/update', id]);
+  }
+
+  removeMongoTicket(id:number):void {
+    this.ticketService.removeTicketMongo(id).
+        then(
+          ok => this.checking(ok),
+          error => console.log(<any>error)
+        );
+  }
+
+  checking(ok:any){
+    if(ok.n == 1){
+      alert("se elimino correctamente");
+    }
+    this.callTicketsMongo();
   }
 
   verTicket(id:number):void{

@@ -14,11 +14,12 @@
 </p>
 <h3>con MongoDb por Backend</h3>
 <ul>
-  <li *ngFor="let ticket of ticketMongo" gigant (click)="verTicket(ticket.id)">
+  <li *ngFor="let ticket of ticketMongo" gigant>
     <b>ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
     <span highligt> [ {{ticket.estado}} ] </span>
     <button (click)="verMongoTicket(ticket.id)" > VER </button>
     <button (click)="updateMongoTicket(ticket.id)" > UPDATE </button>
+    <button (click)="removeMongoTicket(ticket.id)"> DELETE </button>
   </li>
 </ul>
 <h3>con FireBase</h3>
