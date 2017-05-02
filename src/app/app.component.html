@@ -17,6 +17,7 @@
   <li *ngFor="let ticket of ticketMongo" gigant (click)="verTicket(ticket.id)">
     <b>ticket N: {{ticket.id}}</b> - {{ticket.titulo}}
     <span highligt> [ {{ticket.estado}} ] </span>
+    <button (click)="verMongoTicket(ticket.id)" > VER </button>
   </li>
 </ul>
 <h3>con FireBase</h3>
